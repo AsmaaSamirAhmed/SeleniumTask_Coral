@@ -1,0 +1,107 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "start_timestamp": "2022-09-10T15:38:22.327Z",
+        "line": 13,
+        "name": "check transaction type of withdraw",
+        "description": "",
+        "id": "customer-check-transaction-after-deposite-and-withdraw;check-transaction-type-of-withdraw;;2",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 670000000,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "Customer Click on CustomerLogin button in HomePage",
+            "match": {
+              "location": "Customer.CSTPaymentStepDef.customer_click_on_customer_login_button_in_home_page()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 1362000000,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "Select \"Albus Dumbledore\" then press login",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Albus Dumbledore\"",
+                  "offset": 7
+                }
+              ],
+              "location": "Customer.CSTPaymentStepDef.select_then_press_login(java.lang.String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 643000000,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "User make a deposit \"1000\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"1000\"",
+                  "offset": 20
+                }
+              ],
+              "location": "Customer.CSTPaymentStepDef.user_make_a_deposit(java.lang.String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 246000000,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "User make\tWithdraw \"400\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"400\"",
+                  "offset": 19
+                }
+              ],
+              "location": "Customer.CSTPaymentStepDef.user_make_withdraw(java.lang.String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 95000000,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "Check the transaction type of the withdraw",
+            "match": {
+              "location": "Customer.CSTPaymentStepDef.check_the_transaction_type_of_the_withdraw()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@CheckTransaction"
+          }
+        ]
+      }
+    ],
+    "name": "Customer Check Transaction after Deposite and withdraw",
+    "description": "",
+    "id": "customer-check-transaction-after-deposite-and-withdraw",
+    "keyword": "Feature",
+    "uri": "file:src/test/java/Customer/CSTPayment.feature",
+    "tags": []
+  }
+]
