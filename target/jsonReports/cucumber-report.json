@@ -3,7 +3,7 @@
     "line": 1,
     "elements": [
       {
-        "start_timestamp": "2022-09-10T15:38:22.327Z",
+        "start_timestamp": "2022-09-10T16:31:40.428Z",
         "line": 13,
         "name": "check transaction type of withdraw",
         "description": "",
@@ -13,7 +13,7 @@
         "steps": [
           {
             "result": {
-              "duration": 670000000,
+              "duration": 122000000,
               "status": "passed"
             },
             "line": 5,
@@ -25,7 +25,7 @@
           },
           {
             "result": {
-              "duration": 1362000000,
+              "duration": 979000000,
               "status": "passed"
             },
             "line": 6,
@@ -43,7 +43,7 @@
           },
           {
             "result": {
-              "duration": 643000000,
+              "duration": 30279000000,
               "status": "passed"
             },
             "line": 7,
@@ -61,7 +61,7 @@
           },
           {
             "result": {
-              "duration": 246000000,
+              "duration": 40305000000,
               "status": "passed"
             },
             "line": 8,
@@ -79,8 +79,9 @@
           },
           {
             "result": {
-              "duration": 95000000,
-              "status": "passed"
+              "error_message": "java.lang.NullPointerException\r\n\tat Customer.CSTPaymentStepDef.check_the_transaction_type_of_the_withdraw(CSTPaymentStepDef.java:77)\r\n\tat ✽.Check the transaction type of the withdraw(file:///D:/Private/RestAssured/seleniumTask/src/test/java/Customer/CSTPayment.feature:9)\r\n",
+              "duration": 171000000,
+              "status": "failed"
             },
             "line": 9,
             "name": "Check the transaction type of the withdraw",
