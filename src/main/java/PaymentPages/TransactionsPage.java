@@ -2,14 +2,14 @@ package PaymentPages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import pages_Bases.PageBase;
 
-public class TransactionsPage extends PageBase {
+public class TransactionsPage {
+    WebDriver driver;
+    By TransactionType= By.xpath("//tr[@id='anchor1']//td[3]");
     public TransactionsPage(WebDriver driver){
-        super(driver);
+       this.driver=driver;
     }
-    By TransactionType= By.xpath("//tr[@id='anchor1']//td[3]/text()");
     public String GetWithdrawTransactionType(){
-       return getText(TransactionType);
+        return driver.findElement(TransactionType).getText();
     }
 }

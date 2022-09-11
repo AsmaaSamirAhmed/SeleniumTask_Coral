@@ -28,12 +28,6 @@ public class TestBase extends AbstractTestNGCucumberTests {
             e.printStackTrace();
             System.exit(-1);
         }
-       /* DesiredCapabilities ieCapabilities = DesiredCapabilities.internetExplorer();
-        ieCapabilities.setCapability("nativeEvents", false);
-        ieCapabilities.setCapability("unexpectedAlertBehaviour", "accept");
-        ieCapabilities.setCapability("ignoreProtectedModeSettings", true);
-        ieCapabilities.setCapability("disable-popup-blocking", true);
-        ieCapabilities.setCapability("enablePersistentHover", true);*/
         System.setProperty("webdriver.chrome.driver","Drivers/chromedriver.exe");
         driver = new ChromeDriver();
         driver.get(props.getProperty("url"));
@@ -52,9 +46,9 @@ public class TestBase extends AbstractTestNGCucumberTests {
  		}
  	}
 
-   /* @AfterSuite
+    @AfterSuite
       public void tearDown(){
         driver.quit();
     }
-*/
+
 }

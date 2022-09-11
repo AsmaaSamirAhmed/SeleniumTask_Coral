@@ -9,11 +9,10 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
-
-import java.util.NoSuchElementException;
-import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 public class CSTPaymentStepDef extends TestBase
 {
@@ -21,6 +20,8 @@ public class CSTPaymentStepDef extends TestBase
     SelectNamePage namePage;
     AccountPage accountPage;
     TransactionsPage transactionsPage;
+    WebDriverWait wait=new WebDriverWait(driver,1000);
+
     @Given("Customer Click on CustomerLogin button in HomePage")
     public void customer_click_on_customer_login_button_in_home_page() {
         homePage=new HomePage(driver);
@@ -29,51 +30,42 @@ public class CSTPaymentStepDef extends TestBase
     @And("Select {string} then press login")
     public void select_then_press_login(String Name) {
         namePage=new SelectNamePage(driver);
+        accountPage=new AccountPage(driver);
         namePage.SelectName(Name);
         namePage.ClickLogin();
-        accountPage=new AccountPage(driver);
-        accountPage.CheckSuccessAccount(Name);
+        Assert.assertEquals(accountPage.CheckSuccessAccount(),Name);;
     }
     @When("User make a deposit {string}")
-    public void user_make_a_deposit(String DepositeAmount) throws InterruptedException {
+    public void user_make_a_deposit(String DepositeAmount) {
         accountPage=new AccountPage(driver);
         accountPage.ClickOnDepositeBtn();
-        Thread.sleep(10000);
-        System.out.println("Deposite Amount->"+DepositeAmount);
-
         accountPage.InserAmountToDeducted(DepositeAmount);
-     /*   FluentWait wait = new FluentWait(driver);
-//Specify the timout of the wait
-        wait.withTimeout(50000, TimeUnit.MILLISECONDS);
-//Sepcify polling time
-        wait.pollingEvery(250, TimeUnit.MILLISECONDS);
-//Specify what exceptions to ignore
-        wait.ignoring(NoSuchElementException.class);*/
-
-//This is how we specify the condition to wait on.
-//This is what we will explore more in this chapter
-        //  wait.until(ExpectedConditions.presenceOfElementLocated());
-        Thread.sleep(10000);
         accountPage.Confirmation();
-        Thread.sleep(10000);
+        Assert.assertEquals(accountPage.CheckActionDone(),"Deposit Successful");
 
     }
     @And("User make	Withdraw {string}")
-    public void user_make_withdraw(String WithdrawlAmount) throws InterruptedException {
+    public void user_make_withdraw(String WithdrawlAmount) {
         accountPage=new AccountPage(driver);
         accountPage.ClickOnWithDrawlBtn();
-        Thread.sleep(10000);
-        System.out.println("withdrawl Amount->"+WithdrawlAmount);
-        Thread.sleep(10000);
+
+        wait.until(ExpectedConditions.textToBe(By.xpath("//label"),"Amount to be Withdrawn :"));
         accountPage.InserAmountToDeducted(WithdrawlAmount);
-        Thread.sleep(10000);
         accountPage.Confirmation();
-        Thread.sleep(10000);
+        Assert.assertEquals(accountPage.CheckActionDone(),"Transaction successful");
+
     }
-    @Then("Check the transaction type of the withdraw")
-    public void check_the_transaction_type_of_the_withdraw() {
+    @Then("balance should be changed to {string}")
+    public void balance_should_be_changed_to(String balance) {
         accountPage=new AccountPage(driver);
+        Assert.assertEquals(accountPage.CheckBalance(),balance);
+    }
+    @And("The {string} for withdraw is Debit")
+    public void the_for_withdraw_is_debit(String transactionType) {
+        accountPage=new AccountPage(driver);
+        transactionsPage=new TransactionsPage(driver);
+        wait.until(ExpectedConditions.textToBe(By.xpath("//span[@class='error ng-binding']"),"Transaction successful"));
         accountPage.ClickOnTransactionBtn();
-        transactionsPage.GetWithdrawTransactionType();
+        Assert.assertEquals(transactionsPage.GetWithdrawTransactionType(),transactionType);
     }
 }

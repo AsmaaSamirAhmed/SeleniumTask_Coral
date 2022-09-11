@@ -3,17 +3,17 @@
     "line": 1,
     "elements": [
       {
-        "start_timestamp": "2022-09-10T16:31:40.428Z",
-        "line": 13,
-        "name": "check transaction type of withdraw",
+        "start_timestamp": "2022-09-11T13:50:27.892Z",
+        "line": 14,
+        "name": "Make Deposite and Withdraw and track transactions",
         "description": "",
-        "id": "customer-check-transaction-after-deposite-and-withdraw;check-transaction-type-of-withdraw;;2",
+        "id": "customer-check-transaction-after-deposite-and-withdraw;make-deposite-and-withdraw-and-track-transactions;;2",
         "type": "scenario",
         "keyword": "Scenario Outline",
         "steps": [
           {
             "result": {
-              "duration": 122000000,
+              "duration": 110000000,
               "status": "passed"
             },
             "line": 5,
@@ -25,7 +25,7 @@
           },
           {
             "result": {
-              "duration": 979000000,
+              "duration": 1009000000,
               "status": "passed"
             },
             "line": 6,
@@ -43,7 +43,7 @@
           },
           {
             "result": {
-              "duration": 30279000000,
+              "duration": 601000000,
               "status": "passed"
             },
             "line": 7,
@@ -61,7 +61,7 @@
           },
           {
             "result": {
-              "duration": 40305000000,
+              "duration": 847000000,
               "status": "passed"
             },
             "line": 8,
@@ -79,16 +79,39 @@
           },
           {
             "result": {
-              "error_message": "java.lang.NullPointerException\r\n\tat Customer.CSTPaymentStepDef.check_the_transaction_type_of_the_withdraw(CSTPaymentStepDef.java:77)\r\n\tat ✽.Check the transaction type of the withdraw(file:///D:/Private/RestAssured/seleniumTask/src/test/java/Customer/CSTPayment.feature:9)\r\n",
-              "duration": 171000000,
-              "status": "failed"
+              "duration": 59000000,
+              "status": "passed"
             },
             "line": 9,
-            "name": "Check the transaction type of the withdraw",
+            "name": "balance should be changed to \"600\"",
             "match": {
-              "location": "Customer.CSTPaymentStepDef.check_the_transaction_type_of_the_withdraw()"
+              "arguments": [
+                {
+                  "val": "\"600\"",
+                  "offset": 29
+                }
+              ],
+              "location": "Customer.CSTPaymentStepDef.balance_should_be_changed_to(java.lang.String)"
             },
             "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 572000000,
+              "status": "passed"
+            },
+            "line": 10,
+            "name": "The \"Debit\" for withdraw is Debit",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Debit\"",
+                  "offset": 4
+                }
+              ],
+              "location": "Customer.CSTPaymentStepDef.the_for_withdraw_is_debit(java.lang.String)"
+            },
+            "keyword": "And "
           }
         ],
         "tags": [

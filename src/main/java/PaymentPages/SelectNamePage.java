@@ -3,9 +3,8 @@ package PaymentPages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
-import pages_Bases.PageBase;
 
-public class SelectNamePage// extends PageBase
+public class SelectNamePage
 {
     WebDriver driver;
     By NameDropDown= By.id("userSelect");
@@ -16,7 +15,6 @@ public class SelectNamePage// extends PageBase
     }
     public void SelectName(String name)
     {
-        //clickButton(NameDropDown);
         driver.findElement(NameDropDown).click();
         Select NamesList= new Select(driver.findElement(NameDropDown));
         NamesList.selectByVisibleText(name);
